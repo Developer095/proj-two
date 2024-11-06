@@ -6,19 +6,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="flex min-h-screen justify-center max-w-7xl mx-auto h-full">
-      <div className="bg-red-900/20 w-[20%] fixed top-0 h-screen left-0">
+    <section className="mx-auto flex h-full min-h-screen max-w-7xl justify-center">
+      <div className="fixed left-0 top-0 h-screen w-[20%] bg-red-900/20">
         left
       </div>
 
-      <section className="flex-1 h-[200vh] w-[60%] mx-[245px]">
-        <div className="bg-yellow-900 left-0 right-0 ml-[20%] mr-[20%] top-0 fixed">
+      <section className="mx-[245px] h-[200vh] w-[60%] flex-1">
+        <div className="fixed left-0 right-0 top-0 ml-[20%] mr-[20%] bg-yellow-900">
           navbar
         </div>
-        <div className="bg-blue-500 mt-10">{children}</div>
+        <div className="mt-10 bg-blue-500">{children}</div>
       </section>
 
-      <div className="bg-green-900/20 w-[20%] fixed top-0 h-screen right-0">
+      <div className="fixed right-0 top-0 h-screen w-[20%] bg-green-900/20">
         right
       </div>
     </section>
