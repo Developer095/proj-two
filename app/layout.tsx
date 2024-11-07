@@ -18,8 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "antialiased text-[#f8fafc] bg-[#020817]",
-          inter.className
+          "bg-[#020817] text-[#f8fafc] antialiased",
+          inter.className,
         )}
       >
         {children}
