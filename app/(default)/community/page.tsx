@@ -24,7 +24,7 @@
 import React from "react";
 
 // Array of colors
-const arr = ["bg-orange-200", "bg-yellow-400", "bg-red-300"];
+const arr = ["bg-orange-200", "bg-yellow-400", "bg-red-300", "bg-green-300"];
 
 // Helper function
 
@@ -92,9 +92,9 @@ const Community = () => {
   ];
 
   return (
-    <div className="bg-[#020817]">
+    <div className="mt-20 bg-[#ffffff] dark:bg-[#020817]">
       <div>
-        <div className="mb-[80px] ml-14 mt-32 text-[25px] font-bold uppercase">
+        <div className="mb-[80px] ml-8 mt-24 text-[25px] font-bold uppercase text-[#020817] dark:text-[#ffffff]">
           All Users
         </div>
       </div>
@@ -108,7 +108,7 @@ const Community = () => {
           return (
             <div
               key={index}
-              className="h-[290px] w-full rounded-[12px] border-2 border-[#1e293b] bg-[#151821]"
+              className="h-[290px] w-full rounded-[12px] border-2 bg-[#f3f4f6] shadow-md dark:border-[#1e293b] dark:bg-[#151821]"
             >
               <div className="mt-4 flex justify-center">
                 <div
@@ -117,13 +117,13 @@ const Community = () => {
                   {firstLetter}
                 </div>
               </div>
-              <span className="mt-4 block flex justify-center">
+              <span className="mt-4 block flex justify-center text-[18px] font-bold text-[#020817] dark:text-[#ffffff]">
                 {user.username}
               </span>
               <span className="mt-2 block flex justify-center text-[#9ca3af]">
                 {user.role}
               </span>
-              <span className="mt-4 flex pl-4 pr-4 text-center text-sm text-[#B2CCD5]">
+              <span className="mt-2 flex pl-4 pr-4 text-center text-sm text-[#041920] dark:text-[#ffffff]">
                 {user.description}
               </span>
             </div>
@@ -131,13 +131,13 @@ const Community = () => {
         })}
       </div>
       <div className="mt-12 flex justify-center">
-        <button className="h-10 w-14 rounded-[4px] border-none bg-gray-700 text-black">
+        <button className="h-8 w-14 rounded-[4px] border-none bg-[#878b94] text-[#fffff] dark:bg-[#6f7684] dark:text-black">
           Prev
         </button>
-        <button className="ml-2 mr-2 h-10 w-14 rounded-[4px] border-none bg-orange-400">
+        <button className="ml-2 mr-2 h-8 w-8 rounded-[4px] border-none bg-orange-400">
           1
         </button>
-        <button className="h-10 w-14 rounded-[4px] border-none bg-gray-200 text-black">
+        <button className="h-8 w-14 rounded-[4px] border-none bg-[#272e3f] text-[#fffff] dark:bg-[#dce3f1] dark:text-black">
           Next
         </button>
       </div>
