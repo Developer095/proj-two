@@ -1,4 +1,6 @@
+import ThemeChangeButton from "@/components/molecules/navbarcomponents/ThemeChangeButton";
 import "../globals.css";
+import ResponsiveTester from "@/lib/ResponsiveTester";
 
 export default function RootLayout({
   children,
@@ -13,7 +15,7 @@ export default function RootLayout({
 
       <section className="mx-[245px] h-[200vh] w-[60%] flex-1">
         <div className="fixed left-0 right-0 top-0 ml-[20%] mr-[20%] bg-yellow-900">
-          navbar
+          <ThemeChangeButton />
         </div>
         <div className="mt-10 bg-blue-500">{children}</div>
       </section>
@@ -21,6 +23,7 @@ export default function RootLayout({
       <div className="fixed right-0 top-0 h-screen w-[20%] bg-green-900/20">
         right
       </div>
+      <ResponsiveTester />
     </section>
   );
 }
