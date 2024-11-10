@@ -23,7 +23,7 @@ export default function RootLayout({
       <div className="fixed right-0 top-0 h-screen w-[20%] bg-green-900/20">
         right
       </div>
-      <ResponsiveTester />
+      {/* <ResponsiveTester /> */}
     </section>
   );
 }
