@@ -2,6 +2,7 @@ import ThemeChangeButton from "@/components/molecules/navbarcomponents/ThemeChan
 import "../globals.css";
 import Image from "next/image";
 import logo from "../../Images/logo.png";
+import ResponsiveTester from "@/lib/ResponsiveTester";
 
 export default function RootLayout({
   children,
@@ -312,6 +313,7 @@ export default function RootLayout({
           </ul>
         </div>
       </div>
+      {/* <ResponsiveTester /> */}
     </section>
   );
 }
