@@ -1,17 +1,21 @@
 "use client";
-import React from "react";
+import { Moon, Sun } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 const ThemeChangeButton = () => {
+  const [dark, setDark] = useState(true);
+
+  useEffect(() => {
+    document.querySelector("body")?.classList.toggle("dark");
+  }, [dark]);
+
   return (
-    <button
-      onClick={() => {
-        const bodyelement = document.querySelector("body");
-        if (bodyelement) {
-          bodyelement.classList.toggle("dark");
-        }
-      }}
-    >
-      toggle button
+    <button className="rounded-md" onClick={() => setDark(!dark)}>
+      {!dark ? (
+        <Moon className="text-white dark:text-black" />
+      ) : (
+        <Sun className="text-white dark:text-black" />
+      )}
     </button>
   );
 };
