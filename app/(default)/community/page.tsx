@@ -92,9 +92,9 @@ const Community = () => {
   ];
 
   return (
-    <div className="mt-20 bg-[#ffffff] dark:bg-[#020817]">
+    <div className="bg-[#020817] dark:bg-[#ffffff]">
       <div>
-        <div className="mb-[80px] ml-8 mt-24 text-[25px] font-bold uppercase text-[#020817] dark:text-[#ffffff]">
+        <div className="mb-[80px] ml-8 mt-24 text-[25px] font-bold uppercase text-[#ffffff] dark:text-[#020817]">
           All Users
         </div>
       </div>
@@ -108,7 +108,7 @@ const Community = () => {
           return (
             <div
               key={index}
-              className="h-[290px] w-full rounded-[12px] border-2 bg-[#f3f4f6] shadow-md dark:border-[#1e293b] dark:bg-[#151821]"
+              className="h-[290px] w-full rounded-[12px] border-2 border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]"
             >
               <div className="mt-4 flex justify-center">
                 <div
@@ -117,13 +117,13 @@ const Community = () => {
                   {firstLetter}
                 </div>
               </div>
-              <span className="mt-4 block flex justify-center text-[18px] font-bold text-[#020817] dark:text-[#ffffff]">
+              <span className="mt-4 block flex justify-center text-[18px] font-bold text-[#ffffff] dark:text-[#020817]">
                 {user.username}
               </span>
               <span className="mt-2 block flex justify-center text-[#9ca3af]">
                 {user.role}
               </span>
-              <span className="mt-2 flex pl-4 pr-4 text-center text-sm text-[#041920] dark:text-[#ffffff]">
+              <span className="mt-2 flex pl-4 pr-4 text-center text-sm text-[#ffffff] dark:text-[#041920]">
                 {user.description}
               </span>
             </div>
