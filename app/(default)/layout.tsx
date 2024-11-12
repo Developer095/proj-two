@@ -1,8 +1,10 @@
 import "../globals.css";
 import { Search } from "lucide-react";
-import LeftSidebar from "@/components/molecules/LeftSidebar";
 import RightSidebar from "@/components/molecules/navbarcomponents/RightSidebar";
-
+import Image from "next/image";
+import ResponsiveTester from "@/lib/ResponsiveTester";
+import { House } from "lucide-react";
+import LeftSidebar from "@/components/molecules/LeftSidebar";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -10,7 +12,6 @@ export default function RootLayout({
 }>) {
   return (
     <section className="mx-auto flex h-full min-h-screen max-w-7xl justify-center">
-      {/* <div className="fixed left-0 top-0 flex h-screen w-[20%] justify-center bg-[#0f1117] text-white dark:bg-white dark:text-black"> */}
       <LeftSidebar />
 
       <section className="mx-[245px] h-[200vh] w-[60%] flex-1">
@@ -28,7 +29,6 @@ export default function RootLayout({
         <div className="mt-10 bg-blue-500">{children}</div>
       </section>
       <RightSidebar />
-      {/* </div> */}
     </section>
   );
 }
