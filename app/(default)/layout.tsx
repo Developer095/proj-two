@@ -1,9 +1,6 @@
 import "../globals.css";
 import { Search } from "lucide-react";
 import RightSidebar from "@/components/molecules/navbarcomponents/RightSidebar";
-import Image from "next/image";
-import ResponsiveTester from "@/lib/ResponsiveTester";
-import { House } from "lucide-react";
 import LeftSidebar from "@/components/molecules/LeftSidebar";
 export default function RootLayout({
   children,
@@ -17,7 +14,7 @@ export default function RootLayout({
       <section className="mx-[245px] h-[200vh] w-[60%] flex-1">
         <div className="fixed right-20 top-0 ml-[19%] mr-[13%] flex h-10 w-[61%] justify-center bg-[#0f1117] pb-3 dark:bg-white">
           <div className="relative top-2 flex flex-row gap-3 text-sm">
-            <Search />
+            <Search className="absolute left-3 pt-1 text-white dark:text-black" />
             <input
               type="text"
               id="Search_Bar"
