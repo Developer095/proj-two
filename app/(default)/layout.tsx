@@ -23,7 +23,7 @@ export default function RootLayout({
             />
           </div>
         </div>
-        <div className="mt-10 bg-blue-500">{children}</div>
+        <div className="absolute left-60 top-10 ml-1 min-w-min">{children}</div>
       </section>
       <RightSidebar />
     </section>
