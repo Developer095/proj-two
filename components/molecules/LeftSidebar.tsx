@@ -1,9 +1,22 @@
-import { House, Users, Star, Tags, ShieldQuestion } from "lucide-react";
+"use client";
+import {
+  House,
+  Users,
+  Star,
+  Tags,
+  ShieldQuestion,
+  Tag,
+  User2,
+} from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import logo from "../../Images/logo.png";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const LeftSidebar = () => {
+  const pathname = usePathname();
   return (
     <div className="fixed left-0 top-0 flex h-screen w-[20%] justify-center bg-[#0f1117] text-white dark:bg-white dark:text-black">
       <Image
@@ -13,37 +26,24 @@ const LeftSidebar = () => {
       />
 
       <ul className="absolute left-8 top-32 flex flex-col gap-2 text-sm font-semibold">
-        <li className="w-44 rounded-md bg-gradient-to-r from-orange-500 via-orange-400 via-70% to-orange-300 py-2 pl-2 hover:cursor-pointer">
-          <span className="flex flex-row gap-2">
-            <House />
-            <p>Home</p>
-          </span>
-        </li>
-
-        <li className="py-3 hover:cursor-pointer">
-          <span className="flex flex-row gap-3">
-            <Users />
-            <p>Community</p>
-          </span>
-        </li>
-        <li className="py-3 hover:cursor-pointer">
-          <span className="flex flex-row gap-3">
-            <Star />
-            <p>Collections</p>
-          </span>
-        </li>
-        <li className="py-3 hover:cursor-pointer">
-          <span className="flex flex-row gap-3">
-            <Tags />
-            <p>Tags</p>
-          </span>
-        </li>
-        <li className="py-3 hover:cursor-pointer">
-          <span className="flex flex-row gap-3">
-            <ShieldQuestion />
-            <p>Ask a Question</p>
-          </span>
-        </li>
+        {NavLinks.map((Item, i) => {
+          return (
+            <Link
+              key={i}
+              href={Item.url}
+              className={cn(
+                "w-44 rounded-md py-2 pl-2 hover:cursor-pointer",
+                Item.url === pathname &&
+                  "bg-gradient-to-r from-orange-500 via-orange-400 via-70% to-orange-300",
+              )}
+            >
+              <span className="flex flex-row gap-2">
+                <Item.img />
+                <p>{Item.name}</p>
+              </span>
+            </Link>
+          );
+        })}
       </ul>
 
       <div className="absolute bottom-3 left-8 flex flex-col gap-3 dark:text-white">
@@ -59,3 +59,12 @@ const LeftSidebar = () => {
 };
 
 export default LeftSidebar;
+
+const NavLinks = [
+  { name: "Home", url: "/", img: House },
+  { name: "Community", url: "/community", img: Users },
+  { name: "Collections", url: "/collections", img: Star },
+  { name: "Tags", url: "/tags", img: Tag },
+  { name: "Profile", url: "/profile", img: User2 },
+  { name: "Ask a Question", url: "/post-question", img: ShieldQuestion },
+];
