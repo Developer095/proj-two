@@ -84,7 +84,7 @@ const Community = () => {
         "To create immersive game worlds, use game engines like Unity and Unreal Engine.",
     },
     {
-      username: "Makami_2844",
+      username: "Makima_2844",
       role: "Software Developer",
       description:
         "To center, use display: flex, justify-content: center, and align-items: center.",
@@ -93,10 +93,10 @@ const Community = () => {
 
   return (
     <div className="bg-[#020817] dark:bg-[#ffffff]">
-      <div>
-        <div className="mb-[80px] ml-8 mt-24 text-[25px] font-bold uppercase text-[#ffffff] dark:text-[#020817]">
-          All Users
-        </div>
+      <div className="pb-16 pl-2 pt-8">
+        <span className="ml-8 text-[25px] font-bold uppercase text-[#ffffff] dark:text-[#020817]">
+          ALL Users
+        </span>
       </div>
 
       <div className="ml-6 mr-6 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
