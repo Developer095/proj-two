@@ -99,7 +99,7 @@ const Community = () => {
         </span>
       </div>
 
-      <div className="ml-6 mr-6 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
+      <div className="ml-[17px] mr-6 grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
         {users.map((user, index) => {
           const { firstLetter, randomBgColor } = getInitialWithBgColor(
             user.username,
@@ -108,7 +108,7 @@ const Community = () => {
           return (
             <div
               key={index}
-              className="h-[290px] w-full rounded-[12px] border-2 border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]"
+              className="h-[300px] w-[220px] rounded-[12px] border-2 border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]"
             >
               <div className="mt-4 flex justify-center">
                 <div
@@ -123,7 +123,7 @@ const Community = () => {
               <span className="mt-2 block flex justify-center text-[#9ca3af]">
                 {user.role}
               </span>
-              <span className="mt-2 flex pl-4 pr-4 text-center text-sm text-[#ffffff] dark:text-[#041920]">
+              <span className="mt-2 flex text-wrap pl-4 pr-4 text-center text-sm text-[#ffffff] dark:text-[#041920]">
                 {user.description}
               </span>
             </div>
