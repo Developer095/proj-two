@@ -1,6 +1,6 @@
 import { House } from "lucide-react";
 import React from "react";
-import { Search } from "lucide-react";
+import { Search, ThumbsUp, MessageCircle, Eye } from "lucide-react";
 
 const Home = () => {
   return (
@@ -45,16 +45,42 @@ const Home = () => {
         </ul>
       </div>
 
-      <div className="w-[600px] bg-[#0c111b]">
-        <div className="m-6">
-          <p id="heading"></p>
-          <ul id="language"></ul>
-          <div className="border border-b-white border-t-white">
-            <span id="user"></span>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
+      <div className="mt-6 w-[600px] bg-[#0c111b]">
+        <div className="p-6">
+          <p id="heading" className="font-bold">
+            How to center a div?
+          </p>
+          <ul
+            id="language"
+            className="mb-2 mt-2 flex gap-2 text-xs text-[#2567e1]"
+          >
+            <li className="rounded-md bg-gray-800 px-2 py-1">Html</li>
+            <li className="rounded-md bg-gray-800 px-2 py-1">CSS</li>
+          </ul>
+          <div className="flex items-center justify-between border-b border-t border-gray-700 pb-1 pt-1">
+            <span id="user" className="flex gap-2 text-sm text-[#94a3b8]">
+              <p>Zubayer Bin Matin</p>
+              <p>Date</p>
+            </span>
+            <ul className="flex gap-3">
+              <li>
+                <span className="flex items-center text-xs">
+                  <ThumbsUp className="h-4" />
+                  <p>Vote</p>
+                </span>
+              </li>
+              <li>
+                <span className="flex items-center text-xs">
+                  <MessageCircle className="h-4" />
+                  <p>Comment</p>
+                </span>
+              </li>
+              <li>
+                <span className="flex items-center text-xs">
+                  <Eye className="h-4" />
+                  <p>Views</p>
+                </span>
+              </li>
             </ul>
           </div>
         </div>
