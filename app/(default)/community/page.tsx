@@ -108,7 +108,7 @@ const Community = () => {
           return (
             <div
               key={index}
-              className="h-[300px] w-[220px] rounded-[12px] border-2 border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]"
+              className="h-[300px] w-[220px] rounded-[12px] border-2 border-none bg-[#323950] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]"
             >
               <div className="mt-4 flex justify-center">
                 <div

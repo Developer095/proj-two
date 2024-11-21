@@ -34,9 +34,9 @@ const tags = () => {
         {question.map((type, index) => {
           return (
             <div key={index}>
-              <div className="h-28 w-52 rounded-[10px] border-none bg-[#0f1117] shadow-lg dark:bg-[#f3f4f6]">
+              <div className="h-28 w-52 rounded-[10px] border-none bg-[#394057] shadow-lg dark:bg-[#f3f4f6]">
                 <div className="flex justify-center">
-                  <button className="font-sm mt-6 block h-8 w-20 rounded-[2px] bg-[#151821] text-[10px] font-semibold text-[#7b8ea8] dark:bg-[#dce3f1]">
+                  <button className="font-sm mt-6 block h-8 w-20 rounded-[2px] bg-[#434c67] text-[10px] font-semibold text-orange-500 dark:bg-[#dce3f1]">
                     {type.type}
                   </button>
                 </div>

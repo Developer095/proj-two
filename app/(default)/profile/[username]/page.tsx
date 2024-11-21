@@ -1,7 +1,7 @@
-import { Calendar, Medal } from "lucide-react";
 import React from "react";
+import { Calendar, Medal } from "lucide-react";
 
-const Profile = () => {
+const page = ({ params }: { params: { username: string } }) => {
   return (
     <div className="bg-[#020817] dark:bg-[#ffffff]">
       <div className="mb-8 flex flex-row">
@@ -102,4 +102,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default page;
