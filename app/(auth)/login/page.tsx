@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "../../../Images/logo.png";
 import { ScanFace } from "lucide-react";
 
-const Signin = () => {
+function login() {
   return (
     <div className="flex items-center justify-center bg-[#020817]">
       <div className="absolute top-20 h-[400px] w-[350px] rounded-md bg-white">
@@ -15,7 +15,7 @@ const Signin = () => {
               className="mt-2 h-12 w-32 rounded-md bg-orange-500 hover:cursor-pointer"
             />
           </li>
-          <li className="mt-4 pl-4 font-semibold text-black">Sign In</li>
+          <li className="mt-4 pl-4 font-semibold text-black">Login</li>
           <li className="pl-4 text-xs text-gray-600">
             to become a part of Whatever
           </li>
@@ -70,13 +70,13 @@ const Signin = () => {
           <li>
             <span className="mt-3 flex gap-1 pl-4 text-xs">
               <p className="text-gray-600">No account?</p>
-              <p className="text-orange-500 hover:cursor-pointer">Sign up</p>
+              <p className="text-orange-500 hover:cursor-pointer">Sign in</p>
             </span>
           </li>
         </ul>
       </div>
     </div>
   );
-};
+}
 
-export default Signin;
+export default login;
