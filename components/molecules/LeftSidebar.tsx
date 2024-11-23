@@ -47,12 +47,18 @@ const LeftSidebar = () => {
       </ul>
 
       <div className="absolute bottom-3 left-8 flex flex-col gap-3 dark:text-white">
-        <button className="h-8 w-44 rounded-md bg-[#212734] px-8 text-orange-500 dark:bg-orange-500 dark:text-white">
+        <Link
+          href={"/login"}
+          className="flex h-8 w-44 items-center justify-center rounded-md bg-[#212734] px-8 text-orange-500 dark:bg-orange-500 dark:text-white"
+        >
           Login
-        </button>
-        <button className="h-8 w-44 rounded-md bg-[#151821] px-8">
+        </Link>
+        <Link
+          href={"/signup"}
+          className="flex h-8 w-44 items-center justify-center rounded-md bg-[#151821] px-8"
+        >
           Sign up
-        </button>
+        </Link>
       </div>
     </div>
   );
