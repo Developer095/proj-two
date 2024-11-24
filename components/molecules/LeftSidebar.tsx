@@ -69,7 +69,6 @@ export default LeftSidebar;
 const NavLinks = [
   { name: "Home", url: "/", img: House },
   { name: "Community", url: "/community", img: Users },
-  { name: "Collections", url: "/collections", img: Star },
   { name: "Tags", url: "/tags", img: Tag },
   { name: "Profile", url: "/profile", img: User2 },
   { name: "Ask a Question", url: "/post-question", img: ShieldQuestion },

@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import Filters from "@/components/pagecomponents/Home/Filters";
-import QuestionCard from "./QuestionCard";
+import QuestionCard from "../../../components/pagecomponents/Home/QuestionCard";
 
 export interface Question {
   Content: string;

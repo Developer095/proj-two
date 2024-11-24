@@ -1,6 +1,7 @@
 import { Eye, MessageCircle, ThumbsUp } from "lucide-react";
 import React from "react";
-import { Question } from "./page";
+import { Question } from "../../../app/(default)/(home)/page";
+import Link from "next/link";
 
 const QuestionCard = ({
   Content,
@@ -21,9 +22,9 @@ const QuestionCard = ({
   return (
     <div className="mt-6 w-full bg-[#0c111b]">
       <div className="flex flex-col gap-2 p-6">
-        <p id="heading" className="font-bold">
+        <Link href={`/question/${QuesID}`} id="heading" className="font-bold">
           {Title}
-        </p>
+        </Link>
 
         <ul
           id="language"
@@ -39,12 +40,15 @@ const QuestionCard = ({
         </ul>
 
         <div className="flex items-center justify-between border-b border-t border-gray-700 py-1.5">
-          <span id="user" className="flex gap-2 pl-1 text-sm text-[#94a3b8]">
-            <p>{UserName}</p>
+          <span
+            id="user"
+            className="flex w-full justify-between px-2 pl-1 text-sm text-[#94a3b8]"
+          >
+            <p>Asked by: {UserName}</p>
             <p>{date.toLocaleDateString()}</p>
           </span>
 
-          <ul className="flex gap-3">
+          {/* <ul className="flex gap-3">
             <li>
               <span className="flex items-center text-xs">
                 <ThumbsUp className="h-4 hover:cursor-pointer" />
@@ -63,7 +67,7 @@ const QuestionCard = ({
                 <p>Views</p>
               </span>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";
 
-function login() {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -107,6 +107,6 @@ function login() {
       </div>
     </div>
   );
-}
+};
 
-export default login;
+export default Login;

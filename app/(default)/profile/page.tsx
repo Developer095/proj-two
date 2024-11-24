@@ -1,95 +1,123 @@
-import { Calendar, Medal } from "lucide-react";
-import React from "react";
+"use client";
+import { Calendar } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { Question } from "../(home)/page";
+import ProfileQuestionCard from "@/components/pagecomponents/Profile/ProfileQuestionCard";
+import { cn } from "@/lib/utils";
+
+interface User {
+  Bio: string;
+  Email: string;
+  FirstName: string;
+  LastName: string;
+  UserID: number;
+  UserName: string;
+  createdAt: string;
+}
 
 const Profile = () => {
+  const router = useRouter();
+  let sessionToken = localStorage.getItem("sessionToken");
+  if (!sessionToken) {
+    toast.error("You are not logged in");
+    router.push("/login");
+    return;
+  }
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User>({
+    Bio: "",
+    createdAt: "",
+    Email: "",
+    FirstName: "",
+    LastName: "",
+    UserName: "",
+    UserID: 0,
+  });
+
+  useEffect(() => {
+    setLoading(true);
+
+    fetch("http://127.0.0.1:5000/get-user-questions", {
+      headers: { Authorization: `Bearer ${sessionToken}` },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          toast.error("Failed to fetch questions");
+        }
+        return res.json();
+      })
+      .then((data: Question[]) => {
+        setQuestions(data);
+        // console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+
+    fetch("http://127.0.0.1:5000/get-user", {
+      headers: { Authorization: `Bearer ${sessionToken}` },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          toast.error("Failed to fetch User");
+        }
+        return res.json();
+      })
+      .then((data: User) => {
+        setUser(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  if (loading) return <div>loading...</div>;
+
+  const date = new Date(user.createdAt);
+
   return (
-    <div className="bg-[#020817] dark:bg-[#ffffff]">
-      <div className="mb-8 flex flex-row">
-        <div className="ml-8 mt-12 h-[150px] w-[150px] rounded-md bg-gray-200"></div>
-        <div className="flex flex-col">
-          <span className="ml-8 mt-16 text-xl text-[#ffffff] dark:text-[#020817]">
-            Name
+    <div className="w-[650px] bg-[#020817] dark:bg-[#ffffff]">
+      <div className="mb-8 mt-12 flex items-center gap-8">
+        <div
+          className={cn(
+            "flex h-[150px] w-[150px] items-center justify-center rounded-md text-7xl text-white",
+            bgColors[Math.floor(Math.random() * 10)],
+          )}
+        >
+          {user.UserName[0]?.toUpperCase()}
+        </div>
+
+        <div className="flex flex-col gap-2 text-white">
+          <span className="text-sm dark:text-[#020817]">
+            <span className="text-gray-400">First Name:</span> {user.FirstName}
           </span>
-          <span className="ml-8 mt-4 text-lg text-[#ffffff] dark:text-[#020817]">
-            Field
+          <span className="text-sm dark:text-[#020817]">
+            <span className="text-gray-400">Last Name:</span> {user.LastName}
           </span>
-
-          <div className="mt-4 flex flex-row items-center">
-            <Calendar className="ml-8 inline text-[#ffffff] dark:text-[#020817]" />
-            <span className="ml-2 text-[#ffffff] dark:text-[#020817]">
-              Join date
-            </span>
-          </div>
-        </div>
-      </div>
-      <span className="ml-6 mt-12 text-xl font-bold text-[#ffffff] dark:text-[#020817]">
-        Stats
-      </span>
-      <div className="ml-6 mt-2 flex flex-row">
-        <div className="flex h-[90px] w-[160px] items-center justify-center bg-black">
-          <div className="flex h-full w-full flex-row border-none bg-[#151821] px-2 py-3 text-center shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]">
-            <div className="ml-[1px] mr-[9px] flex flex-col items-center justify-center">
-              <span className="text-[#5d88bf] dark:text-[#000000]">0</span>
-              <span className="text-sm text-[#5d88bf] text-gray-400 dark:text-[#000000]">
-                Questions
-              </span>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <span className="text-[#5d88bf] text-white dark:text-[#000000]">
-                0
-              </span>
-              <span className="text-sm text-[#5d88bf] text-gray-400 dark:text-[#000000]">
-                Answers
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="ml-4 mr-4">
-          <div className="flex h-[90px] w-[162px] flex-row items-center justify-center border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]">
-            <Medal className="mr-2 text-yellow-400" />
-            <div className="items-center justify-center">
-              <span className="flex flex-col items-center text-[#5d88bf] dark:text-[#000000]">
-                0
-              </span>
-              <span className="text-sm text-[#5d88bf] dark:text-[#000000]">
-                Gold medal
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="mr-4">
-          <div className="flex h-[90px] w-[162px] flex-row items-center justify-center border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]">
-            <Medal className="mr-2 text-gray-300" />
-            <div className="items-center justify-center">
-              <span className="flex flex-col items-center text-[#5d88bf] dark:text-[#000000]">
-                0
-              </span>
-              <span className="text-sm text-[#5d88bf] dark:text-[#000000]">
-                Silver medal
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="">
-          <div className="flex h-[90px] w-[162px] flex-row items-center justify-center border-none bg-[#151821] shadow-lg dark:border-[#19202e] dark:bg-[#f3f4f6]">
-            <Medal className="mr-2 text-yellow-700" />
-            <div className="items-center justify-center">
-              <span className="flex flex-col items-center text-[#5d88bf] dark:text-[#000000]">
-                0
-              </span>
-              <span className="text-sm text-[] dark:text-[#000000]">
-                Bronze medal
-              </span>
-            </div>
-          </div>
+          <span className="text-sm dark:text-[#020817]">
+            <span className="text-gray-400">Username:</span> {user.UserName}
+          </span>
+          <span className="text-sm dark:text-[#020817]">
+            <span className="text-gray-400">User Email:</span> {user.Email}
+          </span>
+          <span className="text-sm dark:text-[#020817]">
+            <span className="text-gray-400">Join Date:</span>{" "}
+            {date.toLocaleDateString()}
+          </span>
         </div>
       </div>
 
       <div className="ml-6 mt-6">
-        <div className="flex h-[28px] w-40 items-center justify-center rounded-md bg-[#1e293b] dark:bg-[#f1f5f9]">
+        <div className="flex h-[28px] w-40 items-center justify-center rounded-md bg-[#1e293b] py-3 dark:bg-[#f1f5f9]">
           <button className="h-6 w-[70px] rounded-md bg-[#ffedd5] text-xs text-[#f9763e]">
             Top Posts
           </button>
@@ -98,8 +126,41 @@ const Profile = () => {
           </button>
         </div>
       </div>
+
+      <div className="flex w-full flex-col pl-5">
+        {questions.map((Item, index) => {
+          return (
+            <ProfileQuestionCard
+              key={index}
+              QuesID={Item.QuesID}
+              Title={Item.Title}
+              Content={Item.Content}
+              UserID={Item.UserID}
+              updatedAt={Item.updatedAt}
+              Tags={Item.Tags}
+              UserName={Item.UserName}
+              likes={Item.likes}
+            />
+          );
+        })}
+      </div>
+
+      <div className="h-10"></div>
     </div>
   );
 };
 
 export default Profile;
+
+const bgColors = [
+  "bg-[#7bb483]",
+  "bg-[#ff6347]",
+  "bg-[#4b8bbe]",
+  "bg-[#f0ad4e]",
+  "bg-[#9b59b6]",
+  "bg-[#2ecc71]",
+  "bg-[#e74c3c]",
+  "bg-[#34495e]",
+  "bg-[#f39c12]",
+  "bg-[#8e44ad]",
+];

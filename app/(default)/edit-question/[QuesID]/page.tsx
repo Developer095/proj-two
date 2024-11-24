@@ -1,43 +1,56 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const Questions = () => {
+const Questions = ({ params }: { params: { QuesID: string } }) => {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    tags: "",
   });
   const router = useRouter();
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:5000/get-question-by-id?QuesID=${params.QuesID}`)
+      .then((res) => {
+        if (!res.ok) {
+          toast.error("Failed to fetch questions");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setFormData({ title: data.Title, content: data.Content });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [params.QuesID]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const sessionToken = localStorage.getItem("sessionToken");
 
     if (!sessionToken) {
-      toast.error("Session Token is missing 001");
+      toast.error("Session Token is missing");
       return;
     }
     console.log(sessionToken);
 
-    let tags = formData.tags
-      .split(",")
-      .map((item) => item.toLowerCase().trim());
-
     try {
-      const response = await fetch("http://127.0.0.1:5000/postquestion", {
-        method: "POST",
-        body: JSON.stringify({
-          title: formData.title,
-          content: formData.content,
-          tags: tags,
-        }),
-        headers: {
-          Authorization: `Bearer ${sessionToken}`,
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `http://127.0.0.1:5000/editquestion?QuesID=${params.QuesID}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            title: formData.title,
+            content: formData.content,
+          }),
+          headers: {
+            Authorization: `Bearer ${sessionToken}`,
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
       const data = await response.json();
       console.log("1. Data: ", data);
       if (data.error) {
@@ -47,8 +60,8 @@ const Questions = () => {
         }
       } else {
         toast.success(`Question Successfully posted`);
-        setFormData({ title: "", content: "", tags: "" });
-        router.push("/");
+        setFormData({ title: "", content: "" });
+        router.push("/profile");
       }
     } catch (error) {
       console.error("2. Error: ", error);
@@ -58,7 +71,7 @@ const Questions = () => {
   return (
     <div className="m-6">
       <div className="flex w-[676px] items-center justify-between gap-2">
-        <p className="text-xl font-bold text-gray-100">Ask a Question</p>
+        <p className="text-xl font-bold text-gray-100">Edit Question</p>
       </div>
 
       <form
@@ -107,30 +120,6 @@ const Questions = () => {
             }
             required
           />
-        </div>
-
-        {/* Tags Field */}
-        <div className="mb-6">
-          <label
-            htmlFor="tags"
-            className="block text-sm font-medium text-gray-300"
-          >
-            Tags
-          </label>
-          <input
-            type="text"
-            id="tags"
-            className="mt-1 w-full rounded-md border border-gray-700 bg-[#151821] px-3 py-2 text-sm text-gray-300 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
-            placeholder="e.g., HTML, CSS, JavaScript"
-            value={formData.tags}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, tags: e.target.value }))
-            }
-            required
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            Add tags separated by commas to describe your question.
-          </p>
         </div>
 
         {/* Submit Button */}
