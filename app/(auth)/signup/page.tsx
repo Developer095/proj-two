@@ -4,6 +4,7 @@ import Image from "next/image";
 import logo from "../../../Images/logo.png";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -152,7 +153,12 @@ const SignUp = () => {
           <div>
             <span className="mt-3 flex gap-1 pl-4 text-xs">
               <p className="text-gray-600">Already Have An Account?</p>
-              <p className="text-orange-500 hover:cursor-pointer">Login</p>
+              <Link
+                href={"/login"}
+                className="text-orange-500 hover:cursor-pointer"
+              >
+                Login
+              </Link>
             </span>
           </div>
         </form>
