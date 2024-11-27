@@ -1,27 +1,28 @@
-import React from "react";
+"use client";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const tags = () => {
-  const question = [
-    { type: "HTML", number: "2+", answer: "Questions" },
+  const [tagsData, setTagsData] = useState([]);
 
-    { type: "CSS", number: "2+", answer: "Questions" },
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/get-tags")
+      .then((res) => {
+        if (!res.ok) {
+          toast.error("Failed to fetch Tags");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setTagsData(data);
+        // console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-    { type: "PYTHON", number: "3+", answer: "Questions" },
-
-    { type: "NEXTJS", number: "4+", answer: "Questions" },
-
-    { type: "TYPESCRIPT", number: "3+", answer: "Questions" },
-
-    { type: "REACT JS", number: "6+", answer: "Questions" },
-
-    { type: "TEC", number: "3+", answer: "Questions" },
-
-    { type: "C++", number: "8+", answer: "Questions" },
-
-    { type: "C", number: "1+", answer: "Questions" },
-
-    { type: "Assembly", number: "3+", answer: "Questions" },
-  ];
   return (
     <div className="bg-[#020817] dark:bg-[#ffffff]">
       <div className="pb-16 pl-2 pt-8">
@@ -30,22 +31,24 @@ const tags = () => {
         </span>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 pl-8 pr-8">
-        {question.map((type, index) => {
+      <div className="mb-10 grid grid-cols-3 gap-4 pl-8 pr-8">
+        {tagsData.map((type: any, index) => {
           return (
             <div key={index}>
-              <div className="h-28 w-52 rounded-[10px] border-none bg-[#394057] shadow-lg dark:bg-[#f3f4f6]">
+              <div className="h-28 w-52 rounded-[10px] border-none bg-[#0c111b] shadow-lg dark:bg-[#f3f4f6]">
                 <div className="flex justify-center">
-                  <button className="font-sm mt-6 block h-8 w-20 rounded-[2px] bg-[#434c67] text-[10px] font-semibold text-orange-500 dark:bg-[#dce3f1]">
-                    {type.type}
-                  </button>
+                  <Link href={`/tags/${type.QTagID}`}>
+                    <button className="font-sm mt-6 block h-8 rounded-sm bg-[#131b2b] px-3 text-sm font-semibold text-[#94a3b8] dark:bg-[#dce3f1]">
+                      {type.Tag}
+                    </button>
+                  </Link>
                 </div>
                 <div className="mt-6 flex justify-center">
                   <span className="font-sm mr-2 text-[12px] text-[#f47f23]">
-                    {type.number}
+                    {type.TotalQuestions}
                   </span>
-                  <span className="font-sm text-[12px] text-[#7b8ea8]">
-                    {type.answer}
+                  <span className="font-sm text-[12px] text-[#94a3b8]">
+                    Questions
                   </span>
                 </div>
               </div>

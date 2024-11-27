@@ -1,30 +1,26 @@
 "use client";
-import {
-  House,
-  Users,
-  Star,
-  Tags,
-  ShieldQuestion,
-  Tag,
-  User2,
-} from "lucide-react";
+import { House, Users, ShieldQuestion, Tag, User2 } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import logo from "../../Images/logo.png";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const LeftSidebar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const sessionToken = localStorage.getItem("sessionToken");
+
   return (
     <div className="fixed left-0 top-0 flex h-screen w-[20%] justify-center bg-[#0f1117] text-white dark:bg-white dark:text-black">
       <Image
         src={logo}
         className="absolute top-5 h-12 w-32 rounded-md bg-white hover:cursor-pointer dark:bg-orange-500"
         alt="LOGO"
+        onClick={() => router.push("/")}
       />
-
       <ul className="absolute left-8 top-32 flex flex-col gap-2 text-sm font-semibold">
         {NavLinks.map((Item, i) => {
           return (
@@ -47,18 +43,32 @@ const LeftSidebar = () => {
       </ul>
 
       <div className="absolute bottom-3 left-8 flex flex-col gap-3 dark:text-white">
-        <Link
-          href={"/login"}
-          className="flex h-8 w-44 items-center justify-center rounded-md bg-[#212734] px-8 text-orange-500 dark:bg-orange-500 dark:text-white"
-        >
-          Login
-        </Link>
-        <Link
-          href={"/signup"}
-          className="flex h-8 w-44 items-center justify-center rounded-md bg-[#151821] px-8"
-        >
-          Sign up
-        </Link>
+        {sessionToken ? (
+          <button
+            className="flex h-8 w-44 items-center justify-center rounded-md bg-[#212734] px-8 font-medium text-orange-500 dark:bg-orange-500 dark:text-white"
+            onClick={() => {
+              localStorage.setItem("sessionToken", "");
+              router.refresh();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link
+              href={"/login"}
+              className="flex h-8 w-44 items-center justify-center rounded-md bg-[#212734] px-8 text-orange-500 dark:bg-orange-500 dark:text-white"
+            >
+              Login
+            </Link>
+            <Link
+              href={"/signup"}
+              className="flex h-8 w-44 items-center justify-center rounded-md bg-[#151821] px-8"
+            >
+              Sign up
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
