@@ -68,21 +68,22 @@ const Home = () => {
       <Filters setQuesData={setQuesData} />
 
       <div className="flex w-full flex-col">
-        {quesData.map((Item, index) => {
-          return (
-            <QuestionCard
-              key={index}
-              QuesID={Item.QuesID}
-              Title={Item.Title}
-              Content={Item.Content}
-              UserID={Item.UserID}
-              updatedAt={Item.updatedAt}
-              Tags={Item.Tags}
-              UserName={Item.UserName}
-              likes={Item.likes}
-            />
-          );
-        })}
+        {quesData.length > 0 &&
+          quesData.map((Item, index) => {
+            return (
+              <QuestionCard
+                key={index}
+                QuesID={Item.QuesID}
+                Title={Item.Title}
+                Content={Item.Content}
+                UserID={Item.UserID}
+                updatedAt={Item.updatedAt}
+                Tags={Item.Tags}
+                UserName={Item.UserName}
+                likes={Item.likes}
+              />
+            );
+          })}
       </div>
     </div>
   );
