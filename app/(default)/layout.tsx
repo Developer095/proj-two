@@ -12,7 +12,7 @@ export default function RootLayout({
       <LeftSidebar />
 
       <section className="mx-[245px] w-[60%] flex-1">
-        <div className="fixed right-20 top-0 z-50 ml-[19%] mr-[13%] flex h-10 w-[61%] justify-center bg-[#0f1117] pb-3 dark:bg-white">
+        <div className="fixed right-20 top-0 z-50 ml-[20%] mr-[11%] flex h-10 w-[63%] justify-center bg-[#0f1117] pb-3 dark:bg-white">
           <div className="relative top-2 flex flex-row gap-3 text-sm">
             <Search className="absolute left-3 pt-1 text-white dark:text-black" />
             <input

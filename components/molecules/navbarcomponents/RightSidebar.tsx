@@ -10,11 +10,11 @@ export const RightSidebar = () => {
       </div>
       <div className="absolute left-5 top-32">
         <p className="font-bold text-white dark:text-black">Top Questions</p>
-        <ul className="items-left mt-3 flex flex-col gap-3 text-xs">
+        <ul className="items-left mt-3 flex flex-col gap-2 text-xs md:gap-3">
           <li>
             <span className="group flex flex-row items-center hover:cursor-pointer">
               <p className="dark:text-black">How to center a div?</p>
-              <ChevronRight className="absolute left-48 transition-transform group-hover:translate-x-2 dark:fill-black dark:stroke-black" />
+              <ChevronRight className="absolute left-40 transition-transform group-hover:translate-x-2 dark:fill-black dark:stroke-black md:left-48" />
             </span>
           </li>
           <li>

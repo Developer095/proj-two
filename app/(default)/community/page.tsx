@@ -25,13 +25,13 @@ const Community = () => {
 
   return (
     <div className="bg-[#020817] dark:bg-[#ffffff]">
-      <div className="pb-8 pl-2 pt-8">
-        <span className="ml-8 text-[25px] font-bold uppercase text-[#ffffff] dark:text-[#020817]">
+      <div className="pl-1 md:pb-8 md:pl-2 md:pt-8">
+        <span className="ml-3 text-[25px] font-bold uppercase text-[#ffffff] dark:text-[#020817] sm:ml-5 md:ml-8">
           ALL Users
         </span>
       </div>
 
-      <div className="ml-[17px] mr-6 grid w-[700px] gap-4 sm:grid-cols-1 lg:grid-cols-2">
+      <div className="ml-[10px] mr-2 grid w-[280px] gap-2 sm:grid-cols-1 md:ml-[17px] md:mr-6 md:w-[700px] md:gap-4 lg:grid-cols-2">
         {data.map((user: any, index) => {
           const date = new Date(user.createdAt);
           return (

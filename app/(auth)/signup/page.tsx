@@ -41,8 +41,11 @@ const SignUp = () => {
 
   return (
     <div className="flex items-center justify-center bg-[#020817]">
-      <div className="absolute top-20 h-[520px] w-[350px] rounded-md bg-white">
-        <form className="top-4 pl-2 pt-3" onSubmit={handleSubmit}>
+      <div className="absolute top-20 h-[445px] w-[280px] rounded-md bg-white sm:h-[520px] sm:w-[350px]">
+        <form
+          className="top-2 pl-1 pt-2 sm:top-4 sm:pl-2 sm:pt-3"
+          onSubmit={handleSubmit}
+        >
           <div className="pl-4">
             <Image
               src={logo}
@@ -55,7 +58,7 @@ const SignUp = () => {
             to become a part of Whatever
           </div>
 
-          <div className="mt-2 pl-4">
+          <div className="mt-1 pl-4 sm:mt-2">
             <span>
               <label className="text-xs font-semibold text-black">
                 First Name
@@ -63,7 +66,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="fname"
-                className="h-[30px] w-[300px] rounded-sm border px-2 text-sm text-orange-500"
+                className="h-[20px] w-[200px] rounded-sm border px-2 text-sm text-orange-500 sm:h-[30px] sm:w-[300px]"
                 required
                 value={formData.fname}
                 onChange={(e) =>
@@ -73,7 +76,7 @@ const SignUp = () => {
             </span>
           </div>
 
-          <div className="mt-2 pl-4">
+          <div className="mt-1 pl-4 sm:mt-2">
             <span>
               <label className="text-xs font-semibold text-black">
                 Last Name
@@ -81,7 +84,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="lname"
-                className="h-[30px] w-[300px] rounded-sm border px-2 text-sm text-orange-500"
+                className="h-[20px] w-[200px] rounded-sm border px-2 text-sm text-orange-500 sm:h-[30px] sm:w-[300px]"
                 required
                 value={formData.lname}
                 onChange={(e) =>
@@ -91,7 +94,7 @@ const SignUp = () => {
             </span>
           </div>
 
-          <div className="mt-2 pl-4">
+          <div className="mt-1 pl-4 sm:mt-2">
             <span>
               <label className="text-xs font-semibold text-black">
                 UserName
@@ -99,7 +102,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="uname"
-                className="h-[30px] w-[300px] rounded-sm border px-2 text-sm text-orange-500"
+                className="h-[20px] w-[200px] rounded-sm border px-2 text-sm text-orange-500 sm:h-[30px] sm:w-[300px]"
                 required
                 value={formData.uname}
                 onChange={(e) =>
@@ -108,7 +111,7 @@ const SignUp = () => {
               />
             </span>
           </div>
-          <div className="mt-2 pl-4">
+          <div className="mt-1 pl-4 sm:mt-2">
             <span>
               <label className="text-xs font-semibold text-black">
                 Email address
@@ -116,7 +119,7 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                className="h-[30px] w-[300px] rounded-sm border px-2 text-sm text-orange-500"
+                className="h-[20px] w-[200px] rounded-sm border px-2 text-sm text-orange-500 sm:h-[30px] sm:w-[300px]"
                 required
                 value={formData.email}
                 onChange={(e) =>
@@ -125,7 +128,7 @@ const SignUp = () => {
               />
             </span>
           </div>
-          <div className="mt-2 pl-4">
+          <div className="mt-2 flex flex-col pl-4">
             <span>
               <label className="text-xs font-semibold text-black">
                 Password
@@ -133,7 +136,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="password"
-                className="h-[30px] w-[300px] rounded-sm border px-2 text-sm text-orange-500"
+                className="ml-1 h-[20px] w-[200px] rounded-sm border px-2 text-sm text-orange-500 sm:h-[30px] sm:w-[300px]"
                 required
                 value={formData.pass}
                 onChange={(e) =>
@@ -142,10 +145,10 @@ const SignUp = () => {
               />
             </span>
           </div>
-          <div className="mt-3 flex items-center justify-center">
+          <div className="mt-2 flex items-center justify-center sm:mt-3">
             <button
               type="submit"
-              className="mr-3 h-[30px] w-[300px] rounded-md bg-orange-500 bg-gradient-to-r from-orange-500 via-orange-400 via-70% to-orange-200 text-sm font-semibold"
+              className="mr-3 h-[20px] w-[200px] rounded-md bg-orange-500 bg-gradient-to-r from-orange-500 via-orange-400 via-70% to-orange-200 text-sm font-semibold sm:h-[30px] sm:w-[300px]"
             >
               continue
             </button>

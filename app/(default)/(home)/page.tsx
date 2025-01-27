@@ -46,22 +46,22 @@ const Home = () => {
   }
 
   return (
-    <div className="m-6">
-      <div className="flex w-[676px] items-center justify-between gap-2">
-        <p className="text-xl font-bold">All Questions</p>
+    <div className="mx-2 my-6 sm:mx-4 md:mx-8">
+      <div className="flex w-[400px] items-center justify-between gap-2 md:w-[430px] lg:w-[540px] xl:w-[676px]">
+        <p className="text-sm font-bold md:text-xl">All Questions</p>
         <Link
           href={"/post-question"}
-          className="rounded-md bg-gradient-to-r from-orange-500 via-orange-400 via-80% to-orange-300 px-4 py-2 text-xs transition-all hover:scale-105"
+          className="rounded-md bg-gradient-to-r from-orange-500 via-orange-400 via-80% to-orange-300 px-2 py-1 text-xs transition-all hover:scale-105 md:px-4 md:py-2"
         >
           Ask a question
         </Link>
       </div>
       <div className="mt-6 flex items-center justify-center">
-        <Search className="absolute left-16 p-1 text-[#335ca8]" />
+        <Search className="absolute left-1 p-1 text-[#335ca8] sm:left-14 md:left-8 lg:left-9 xl:left-16" />
         <input
           type="text"
           placeholder="Search for questions"
-          className="w-[600px] rounded-md border-2 border-[#0c111b] bg-[#0c111b] px-2 py-1 pl-8 text-sm"
+          className="w-[250px] rounded-md border-2 border-[#0c111b] bg-[#0c111b] text-sm sm:w-[315px] sm:py-1 sm:pl-5 md:w-[420px] md:pl-8 lg:w-[550px] lg:px-2 lg:pl-8 xl:w-[600px]"
         />
       </div>
 
